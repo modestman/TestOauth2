@@ -15,6 +15,8 @@
 		02FAE05522F9630B004115B2 /* OIDTokenUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FAE05422F9630B004115B2 /* OIDTokenUtilities.swift */; };
 		02FAE05722F97938004115B2 /* WebAuthenticationURLHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FAE05622F97938004115B2 /* WebAuthenticationURLHandler.swift */; };
 		5926D99273F42A2C97828F87 /* Pods_TestOauth2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09FB9229FE089F374757A3A5 /* Pods_TestOauth2.framework */; };
+		780D536222F9FEB900A5FFF3 /* Authorizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780D536122F9FEB900A5FFF3 /* Authorizer.swift */; };
+		780D536422FA0C3200A5FFF3 /* GoogleJwtPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780D536322FA0C3200A5FFF3 /* GoogleJwtPayload.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		02FAE05422F9630B004115B2 /* OIDTokenUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OIDTokenUtilities.swift; sourceTree = "<group>"; };
 		02FAE05622F97938004115B2 /* WebAuthenticationURLHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebAuthenticationURLHandler.swift; sourceTree = "<group>"; };
 		09FB9229FE089F374757A3A5 /* Pods_TestOauth2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestOauth2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		780D536122F9FEB900A5FFF3 /* Authorizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authorizer.swift; sourceTree = "<group>"; };
+		780D536322FA0C3200A5FFF3 /* GoogleJwtPayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleJwtPayload.swift; sourceTree = "<group>"; };
 		988FAB0C4A7D36D10C67808F /* Pods-TestOauth2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestOauth2.debug.xcconfig"; path = "Target Support Files/Pods-TestOauth2/Pods-TestOauth2.debug.xcconfig"; sourceTree = "<group>"; };
 		AE1C4D6845047F758678AFBF /* Pods-TestOauth2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestOauth2.release.xcconfig"; path = "Target Support Files/Pods-TestOauth2/Pods-TestOauth2.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -68,7 +72,9 @@
 				02FAE04222F85E0D004115B2 /* AppDelegate.swift */,
 				02FAE04422F85E0D004115B2 /* ViewController.swift */,
 				02FAE05422F9630B004115B2 /* OIDTokenUtilities.swift */,
+				780D536322FA0C3200A5FFF3 /* GoogleJwtPayload.swift */,
 				02FAE05622F97938004115B2 /* WebAuthenticationURLHandler.swift */,
+				780D536122F9FEB900A5FFF3 /* Authorizer.swift */,
 				02FAE04622F85E0D004115B2 /* Main.storyboard */,
 				02FAE04922F85E0F004115B2 /* Assets.xcassets */,
 				02FAE04B22F85E0F004115B2 /* LaunchScreen.storyboard */,
@@ -106,6 +112,7 @@
 				02FAE03C22F85E0D004115B2 /* Frameworks */,
 				02FAE03D22F85E0D004115B2 /* Resources */,
 				ACBD8BDC5BD95AD69DDD2C6A /* [CP] Embed Pods Frameworks */,
+				46A7FA055970B2A5745F9AC7 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -185,6 +192,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		46A7FA055970B2A5745F9AC7 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TestOauth2/Pods-TestOauth2-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TestOauth2/Pods-TestOauth2-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TestOauth2/Pods-TestOauth2-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		ACBD8BDC5BD95AD69DDD2C6A /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -209,6 +233,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				780D536222F9FEB900A5FFF3 /* Authorizer.swift in Sources */,
+				780D536422FA0C3200A5FFF3 /* GoogleJwtPayload.swift in Sources */,
 				02FAE04522F85E0D004115B2 /* ViewController.swift in Sources */,
 				02FAE05722F97938004115B2 /* WebAuthenticationURLHandler.swift in Sources */,
 				02FAE05522F9630B004115B2 /* OIDTokenUtilities.swift in Sources */,

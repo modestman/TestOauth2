@@ -8,6 +8,8 @@
 
 import UIKit
 import OAuthSwift
+import GoogleAPIClientForREST
+import GTMSessionFetcher
 
 class ViewController: UIViewController {
 
@@ -23,6 +25,7 @@ class ViewController: UIViewController {
     private var oauth: OAuth2Swift!
     private var credentials: OAuthSwiftCredential?
     
+    private var authorizer: Authorizer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,7 +51,10 @@ class ViewController: UIViewController {
                 switch result {
                 case .success(let success):
                     self.credentials = success.credential
-                    print(success.credential.oauthToken)
+                    if let idToken = success.parameters["id_token"] as? String,
+                       let jwt = OIDTokenUtilities.decodeJWT(idToken) {
+                        
+                    }
                 case .failure(let error):
                     print(error)
                 }
@@ -65,6 +71,23 @@ class ViewController: UIViewController {
                 print(success.credential.oauthToken)
             case .failure(let error):
                 print(error)
+            }
+        }
+    }
+    
+    @IBAction func calendarRequest(_ sender: Any) {
+        guard let credentials = self.credentials else { return }
+        let authorizer = Authorizer(credentials: credentials, oauth: oauth)
+        let googleCalendarService = GTLRCalendarService()
+        googleCalendarService.authorizer = authorizer
+        
+        let query = GTLRCalendarQuery_CalendarListList.query()
+        query.maxResults = 10
+        googleCalendarService.executeQuery(query) { _, response, error in
+            if let calendarList = response as? GTLRCalendar_CalendarList {
+                calendarList.items?.forEach({ item in
+                    print(item.identifier)
+                })
             }
         }
     }

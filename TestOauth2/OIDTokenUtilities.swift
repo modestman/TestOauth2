@@ -46,6 +46,25 @@ struct OIDTokenUtilities {
         return base64string
     }
     
+    public static func decodeBase64url(_ str: String) -> Data? {
+        var base64string = str
+        base64string = base64string.replacingOccurrences(of: "-", with: "+")
+        base64string = base64string.replacingOccurrences(of: "_", with: "/")
+        let missingPadding = base64string.count % 4
+        switch missingPadding {
+        case 1:
+            base64string += "==="
+        case 2:
+            base64string += "=="
+        case 3:
+            base64string += "="
+        default:
+            break
+        }
+        let data = Data(base64Encoded: base64string)
+        return data
+    }
+    
     public static func randomURLSafeString(withSize size: Int) -> String?  {
         var bytes = [Int8](repeating: 0, count: size)
         let status = CCRandomGenerateBytes(&bytes, bytes.count)
@@ -65,5 +84,18 @@ struct OIDTokenUtilities {
             _ = CC_SHA256(buffer.baseAddress, CC_LONG(buffer.count), &bytes)
         }
         return Data(bytes)
+    }
+    
+    public static func decodeJWT(_ jwtToken: String) -> GoogleJwtPayload? {
+        guard
+            let payloadPart = jwtToken.split(separator: ".").dropFirst().first,
+            let data = OIDTokenUtilities.decodeBase64url(String(payloadPart))
+        else {
+            return nil
+        }
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        let result = try? decoder.decode(GoogleJwtPayload.self, from: data)
+        return result
     }
 }
