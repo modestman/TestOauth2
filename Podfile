@@ -6,5 +6,9 @@ target 'TestOauth2' do
   use_frameworks!
 
   pod 'OAuthSwift', '~> 2.0.0'
+  
+  # Google Calendar API
+  pod 'GoogleSignIn'
+  pod 'GoogleAPIClientForREST/Calendar'
 
 end
