@@ -38,6 +38,7 @@ class ViewController: UIViewController {
         oauth.authorizeURLHandler = WebAuthenticationURLHandler(callbackUrlScheme: Constants.callbackScheme)
     }
 
+    // Авторизация
     @IBAction func logIn(_ sender: Any) {
         let codeVerifier = OIDTokenUtilities.generateCodeVerifier() ?? ""
         let codeChallenge = OIDTokenUtilities.codeChallengeS256(forVerifier: codeVerifier) ?? ""
@@ -51,20 +52,17 @@ class ViewController: UIViewController {
                 switch result {
                 case .success(let success):
                     self.credentials = success.credential
-                    if let idToken = success.parameters["id_token"] as? String,
-                       let jwt = OIDTokenUtilities.decodeJWT(idToken) {
-                        
-                    }
+                    // из success.parameters["id_token"] можно вытащить email и имя пользователя
                 case .failure(let error):
                     print(error)
                 }
         })
     }
     
+    // Обновление токена
     @IBAction func updateToken(_ sender: Any) {
         guard let credentials = self.credentials else { return }
-        oauth.renewAccessToken(
-        withRefreshToken: credentials.oauthRefreshToken) { [unowned self] result in
+        oauth.renewAccessToken(withRefreshToken: credentials.oauthRefreshToken) { [unowned self] result in
             switch result {
             case .success(let success):
                 self.credentials = success.credential
@@ -75,9 +73,11 @@ class ViewController: UIViewController {
         }
     }
     
+    // Пример API запроса с авторизацией
     @IBAction func calendarRequest(_ sender: Any) {
         guard let credentials = self.credentials else { return }
         let authorizer = Authorizer(credentials: credentials, oauth: oauth)
+        
         let googleCalendarService = GTLRCalendarService()
         googleCalendarService.authorizer = authorizer
         
