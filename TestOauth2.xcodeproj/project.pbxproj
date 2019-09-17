@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		023207402330E36200CA12DC /* GithubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0232073F2330E36200CA12DC /* GithubViewController.swift */; };
 		02FAE04322F85E0D004115B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FAE04222F85E0D004115B2 /* AppDelegate.swift */; };
 		02FAE04522F85E0D004115B2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FAE04422F85E0D004115B2 /* ViewController.swift */; };
 		02FAE04822F85E0D004115B2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02FAE04622F85E0D004115B2 /* Main.storyboard */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0232073F2330E36200CA12DC /* GithubViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubViewController.swift; sourceTree = "<group>"; };
 		02FAE03F22F85E0D004115B2 /* TestOauth2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestOauth2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02FAE04222F85E0D004115B2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		02FAE04422F85E0D004115B2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 			children = (
 				02FAE04222F85E0D004115B2 /* AppDelegate.swift */,
 				02FAE04422F85E0D004115B2 /* ViewController.swift */,
+				0232073F2330E36200CA12DC /* GithubViewController.swift */,
 				02FAE05422F9630B004115B2 /* OIDTokenUtilities.swift */,
 				02FAE05622F97938004115B2 /* WebAuthenticationURLHandler.swift */,
 				02FAE04622F85E0D004115B2 /* Main.storyboard */,
@@ -211,6 +214,7 @@
 			files = (
 				02FAE04522F85E0D004115B2 /* ViewController.swift in Sources */,
 				02FAE05722F97938004115B2 /* WebAuthenticationURLHandler.swift in Sources */,
+				023207402330E36200CA12DC /* GithubViewController.swift in Sources */,
 				02FAE05522F9630B004115B2 /* OIDTokenUtilities.swift in Sources */,
 				02FAE04322F85E0D004115B2 /* AppDelegate.swift in Sources */,
 			);
@@ -362,6 +366,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LLB977TXWN;
 				INFOPLIST_FILE = TestOauth2/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -381,6 +386,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LLB977TXWN;
 				INFOPLIST_FILE = TestOauth2/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
